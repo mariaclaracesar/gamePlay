@@ -7,7 +7,7 @@ import { SignIn } from '../screens/SignIn'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
-  return (
+  return(
     <Navigator
       headerMode="none"
       screenOptions={{
