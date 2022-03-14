@@ -60,7 +60,6 @@ export function Home() {
 
   return (
     <Background>  
-      <View>
         <View style={styles.header}>
           <Profile/>
           <ButtonAdd onPress={handleAppointmentCreate} />
@@ -70,30 +69,26 @@ export function Home() {
           categorySelected={category}
           setCategory={handleCategorySelect}
         />
+        
+        <ListHeader
+          title="Partidas agendadas"
+          subtitle="Total 6"
+        />
 
-        <View style={styles.content}>
-          <ListHeader
-            title="Partidas agendadas"
-            subtitle="Total 6"
+       <FlatList 
+        data={appointments}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+        <Appointment 
+          data={item} 
+          onPress={handleAppointmentDetails}
           />
-
-          <FlatList 
-             data={appointments}
-             keyExtractor={item => item.id}
-             renderItem={({ item }) => (
-             <Appointment 
-             data={item} 
-             onPress={handleAppointmentDetails}
-             />
-            )}
-            ItemSeparatorComponent={() => <ListDivider />}
-            style={styles.matches}
-            showsVerticalScrollIndicator={false}
-
-          />
-
-        </View>
-    </View>
+        )}
+        ItemSeparatorComponent={() => <ListDivider />}
+        contentContainerStyle={{paddingBottom: 69}}
+        style={styles.matches}
+        showsVerticalScrollIndicator={false}
+      />
     </Background>
   )
 }
